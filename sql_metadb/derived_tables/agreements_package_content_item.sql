@@ -12,7 +12,7 @@
 --metadb:require folio_agreements.identifier_namespace.idns_id uuid
 --metadb:require folio_agreements.identifier_namespace.idns_value text
 --metadb:require folio_agreements.identifier_occurrence.io_identifier_fk uuid
---metadb:require folio_agreements.identifier_occurrence.io_res_fk uuid
+--metadb:require folio_agreements.identifier_occurrence.io_ti_fk uuid
 --metadb:require folio_agreements.package.id uuid
 --metadb:require folio_agreements.package.pkg_reference text
 --metadb:require folio_agreements.package.pkg_remote_kb uuid
@@ -105,7 +105,7 @@ FROM
     LEFT JOIN folio_agreements.platform_title_instance AS pti ON pci.pci_pti_fk = pti.id
     LEFT JOIN folio_agreements.platform AS pt ON pti.pti_pt_fk = pt.pt_id    
     LEFT JOIN folio_agreements.title_instance AS ti ON pti.pti_ti_fk = ti.id
-    LEFT JOIN folio_agreements.identifier_occurrence AS oc ON ti.id = oc.io_res_fk    
+    LEFT JOIN folio_agreements.identifier_occurrence AS oc ON ti.id = oc.io_ti_fk    
     LEFT JOIN folio_agreements.identifier AS id ON oc.io_identifier_fk = id.id_id
     LEFT JOIN folio_agreements.identifier_namespace AS idns ON id.id_ns_fk = idns.idns_id
     LEFT JOIN folio_agreements.erm_resource AS res ON res.id = pti.pti_ti_fk
@@ -167,7 +167,7 @@ FROM
     LEFT JOIN folio_agreements.platform_title_instance AS pti ON pci.pci_pti_fk = pti.id
     LEFT JOIN folio_agreements.platform AS pt ON pti.pti_pt_fk = pt.pt_id    
     LEFT JOIN folio_agreements.title_instance AS ti ON pti.pti_ti_fk = ti.id
-    LEFT JOIN folio_agreements.identifier_occurrence AS oc ON ti.id = oc.io_res_fk    
+    LEFT JOIN folio_agreements.identifier_occurrence AS oc ON ti.id = oc.io_ti_fk    
     LEFT JOIN folio_agreements.identifier AS id ON oc.io_identifier_fk = id.id_id
     LEFT JOIN folio_agreements.identifier_namespace AS idns ON id.id_ns_fk = idns.idns_id
     LEFT JOIN folio_agreements.erm_resource AS res ON res.id = pti.pti_ti_fk
