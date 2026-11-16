@@ -25,7 +25,7 @@ SELECT
     jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'amountExpended')::numeric(19, 4) AS transaction_encumbrance_amount_expended,
     jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'initialAmountEncumbered')::numeric(19, 4) AS transaction_encumbrance_initial_amount,
     jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'orderType') AS transaction_encumbrance_order_type,
-    jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'subscription') AS transaction_encumbrance_subscription,
+    jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'subscription')::bool AS transaction_encumbrance_subscription,
     jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'status') AS transaction_encumbrance_status,
     jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'sourcePoLineId')::uuid AS po_line_id,
     jsonb_extract_path_text(ft.jsonb, 'encumbrance', 'sourcePurchaseOrderId')::uuid AS po_id,
